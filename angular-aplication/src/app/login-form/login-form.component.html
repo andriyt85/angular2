@@ -1,0 +1,25 @@
+<form [formGroup]="loginForm" novalidate>
+    <h1>Login</h1>
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      placeholder="Login"
+      formControlName='name'
+      id='login'
+    >
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input
+      type="password"
+      matInput
+      placeholder="Password"
+      formControlName='password'
+      id='password'
+    >
+  </mat-form-field>
+  <button
+    mat-flat-button
+    (click)='signIn()'
+  >Sign in</button>
+</form>
+
