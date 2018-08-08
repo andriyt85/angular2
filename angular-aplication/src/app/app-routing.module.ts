@@ -1,16 +1,20 @@
-import { LoginFormComponent } from './login-form/login-form.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { StatisticComponent } from './statistic/statistic.component';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'login', component: LoginFormComponent },
-  { path: 'statistic', component: StatisticComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {
+    path: 'login',
+    loadChildren: '../app/app-logic/login/login.module#LoginModule'
+  },
+  {
+    path: 'tasks',
+    loadChildren: '../app/app-logic/task-manager/task-manager.module#TaskManagerModule'
+  },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
     exports: [RouterModule]
 })
 

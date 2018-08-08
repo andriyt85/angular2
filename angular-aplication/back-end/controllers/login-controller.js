@@ -8,7 +8,6 @@ module.exports = (app) => {
   app.post('/api/sign-in', (req, res) => {
     LoginDbModule.find({ name: req.body.name })
       .then((login) => {
-        console.log(login);
         if (login.length && req.body.password === login[0].password) {
           res.status(200).json({authenticated: true});
         } else {
@@ -19,6 +18,17 @@ module.exports = (app) => {
         res.status(400).json({error: 'Something went wrong !!!'});
       });
   });
+
+
+  /* sign up */
+
+  app.post('/api/sign-up', (req, res) => {
+    const { body: { name, password } } = req;
+    const data = new LoginDbModule({ name, password });
+    data.save()
+      .then(saved => res.status(200).json({saved: true}))
+      .catch(err => res.status(400).json({error: 'Something went wrong !!!'}));
+  })
 
   /*reset password*/
 
