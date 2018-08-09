@@ -1,3 +1,4 @@
+import { AuthGuard } from './common/services/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
@@ -8,7 +9,8 @@ const routes: Routes = [
   },
   {
     path: 'tasks',
-    loadChildren: '../app/app-logic/task-manager/task-manager.module#TaskManagerModule'
+    loadChildren: '../app/app-logic/task-manager/task-manager.module#TaskManagerModule',
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];

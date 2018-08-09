@@ -1,1 +1,22 @@
-<button mat-fab>+</button>
+<form [formGroup]="taskForm" novalidate>
+  <h1>Create new task</h1>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="name" formControlName='name' id='name'>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="description" formControlName='description' id='description'>
+  </mat-form-field>
+  <button mat-fab (click)='createTask()'>+</button>
+</form>
+
+
+
+<!-- <mat-list>
+  <mat-list-item *ngFor="let message of messages">
+    <h3 matLine> {{message.from}} </h3>
+    <p matLine>
+      <span> {{message.subject}} </span>
+      <span class="demo-2"> -- {{message.content}} </span>
+    </p>
+  </mat-list-item>
+</mat-list> -->

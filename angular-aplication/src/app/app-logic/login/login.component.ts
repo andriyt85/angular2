@@ -48,7 +48,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
      this.loginService.signIn(this.loginForm.value).subscribe((res: any) => {
        if (res.authenticated) {
-         this.router.navigate(['/tasks']);
+          this.router.navigate(['/tasks']);
+          this.loginService.setSecureToken('true');
        } else {
          alert('Opppsssss!!!!!');
        }

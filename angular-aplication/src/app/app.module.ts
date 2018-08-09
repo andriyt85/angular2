@@ -8,6 +8,7 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { InterceptorsModule } from './common/interceptors/interceptors.module';
 
 import { AppComponent } from './app.component';
+import { LoginService } from './app-logic/login/services/login.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { AppComponent } from './app.component';
       InterceptorsModule
 
    ],
-   providers: [],
+   providers: [LoginService],
    bootstrap: [
       AppComponent
    ]
